@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Encryptor/Decryptor</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Message Encryptor/Decryptor</h1>
+        
+        <div class="form-group">
+            <label for="mode">Mode:</label>
+            <select id="mode" onchange="toggleMode()">
+                <option value="encrypt">Encrypt</option>
+                <option value="decrypt">Decrypt</option>
+            </select>
+        </div>
+        
+        <div id="encrypt-section">
+            <div class="form-group">
+                <label for="message">Enter Message:</label>
+                <textarea id="message" rows="3" placeholder="Type your message here..."></textarea>
+                <button class="button small" onclick="clearField('message')">Clear</button>
+            </div>
+            <button class="button" onclick="encrypt()">Encrypt</button>
+        </div>
+        
+        <div class="form-group">
+            <label for="encryptedMessage">Encrypted Message:</label>
+            <textarea id="encryptedMessage" rows="3" readonly></textarea>
+            <button class="button small" onclick="copyToClipboard('encryptedMessage')">Copy</button>
+            <button class="button small" onclick="clearField('encryptedMessage')">Clear</button>
+        </div>
+        
+        <div id="decrypt-section" style="display: none;">
+            <div class="form-group">
+                <label for="key">Key:</label>
+                <input type="text" id="key" placeholder="Enter key here...">
+                <button class="button small" onclick="copyToClipboard('key')">Copy</button>
+                <button class="button small" onclick="clearField('key')">Clear</button>
+            </div>
+            <button class="button" onclick="decrypt()">Decrypt</button>
+        </div>
+        
+        <div class="form-group" id="decrypted-message-section" style="display: none;">
+            <label for="decryptedMessage">Decrypted Message:</label>
+            <textarea id="decryptedMessage" rows="3" readonly></textarea>
+            <button class="button small" onclick="clearField('decryptedMessage')">Clear</button>
+        </div>
+        
+        <button class="button" onclick="copyDailyKey()">Copy Daily Key</button>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
